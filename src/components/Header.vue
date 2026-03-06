@@ -44,3 +44,35 @@
   </div>
 </nav>
 </template>
+
+<script>
+  export default {
+    data() {
+      return {
+        isScrolled: false,
+        showContactModal: false,
+        navLinks: [
+        { label: 'Work', href: '#work' },
+        { label: 'Services', href: '#services' },
+        { label: 'About', href: '#about' },
+        { label: 'Contact', href: '#contact' }
+      ],
+      };
+    },
+    mounted() {
+      window.addEventListener('scroll', this.handleScroll);
+    },
+    beforeUnmount() {
+      window.removeEventListener('scroll', this.handleScroll);
+    },
+    methods: {
+      handleScroll() {
+        this.isScrolled = window.scrollY > 50;
+      },
+      toggleMenu() {
+        // Logic to toggle mobile menu (not implemented in this snippet)
+      },
+    },
+  };
+
+</script>
