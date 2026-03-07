@@ -1,12 +1,5 @@
 <template>
-  <nav 
-  :class="[
-    'fixed w-full z-50 transition-all duration-300',
-    isScrolled 
-      ? 'bg-slate-900/90 backdrop-blur-xl border-b border-white/10 py-4' 
-      : 'bg-transparent py-6'
-  ]"
->
+  <nav :class="['fixed w-full z-50 transition-all duration-300', isScrolled ? 'bg-slate-900/90 backdrop-blur-xl border-b border-white/10 py-4' : 'bg-transparent py-6']">
   <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
 
     <!-- Logo -->
