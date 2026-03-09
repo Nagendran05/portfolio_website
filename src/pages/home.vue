@@ -179,77 +179,17 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact-section">
-      <div class="contact-container">
-        <div class="contact-content">
-          <div class="section-header">
-            <span class="section-tag">Get in Touch</span>
-            <h2 class="section-title">Let's Create Something Amazing</h2>
-            <p class="section-desc">Ready to start your next project? We'd love to hear from you.</p>
-          </div>
+    <form @submit.prevent="handleSubmit" class="grid md:grid-cols-2 gap-6 mt-10">
+      <input v-model="form.name" type="text" placeholder="Your Name" required class="col-span-1 bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:border-indigo-500 focus:outline-none"/>
 
-          <form class="contact-form" @submit.prevent="handleSubmit">
-            <div class="form-group">
-              <input 
-                type="text" 
-                v-model="form.name"
-                placeholder="Your Name"
-                required
-                class="form-input"
-              >
-            </div>
-            <div class="form-group">
-              <input 
-                type="email" 
-                v-model="form.email"
-                placeholder="Email Address"
-                required
-                class="form-input"
-              >
-            </div>
-            <div class="form-group">
-              <select v-model="form.budget" class="form-select">
-                <option value="" disabled selected>Project Budget</option>
-                <option value="5k-10k">$5,000 - $10,000</option>
-                <option value="10k-25k">$10,000 - $25,000</option>
-                <option value="25k-50k">$25,000 - $50,000</option>
-                <option value="50k+">$50,000+</option>
-              </select>
-            </div>
-            <div class="form-group full">
-              <textarea 
-                v-model="form.message"
-                placeholder="Tell us about your project..."
-                rows="4"
-                required
-                class="form-input"
-              ></textarea>
-            </div>
-            <button type="submit" class="btn-primary submit-btn" :disabled="isSubmitting">
-              <span v-if="!isSubmitting">Send Message</span>
-              <span v-else class="spinner"></span>
-            </button>
-          </form>
-        </div>
+      <input v-model="form.email" type="email" placeholder="Email Address" required class="col-span-1 bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:border-indigo-500 focus:outline-none"/>
 
-        <div class="contact-visual">
-          <div class="contact-card">
-            <div class="card-content">
-              <h3>Start a Conversation</h3>
-              <p>Whether you have a detailed brief or just a spark of an idea, we're here to help shape your vision.</p>
-              <div class="contact-links">
-                <a href="mailto:hello@studio.com" class="contact-link">
-                  <span>hello@studio.com</span>
-                </a>
-                <a href="tel:+1234567890" class="contact-link">
-                  <span>+1 (234) 567-890</span>
-                </a>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+      <textarea v-model="form.message" placeholder="Tell us about your project..." rows="4" class="col-span-2 bg-white/5 border border-white/10 rounded-xl px-5 py-4 focus:border-indigo-500 focus:outline-none"></textarea>
+
+      <button type="submit" class="col-span-2 bg-indigo-500 hover:bg-indigo-600 rounded-full py-4 font-semibold transition">
+        Send Message
+      </button>
+    </form>
 
     <!-- Footer -->
     <footer class="footer">
@@ -327,13 +267,6 @@ export default {
       showContactModal: false,
       isSubmitting: false,
       modalEmail: '',
-      
-      navLinks: [
-        { label: 'Work', href: '#work' },
-        { label: 'Services', href: '#services' },
-        { label: 'About', href: '#about' },
-        { label: 'Contact', href: '#contact' }
-      ],
       
       stats: [
         { value: 150, suffix: '+', label: 'Projects Completed' },
