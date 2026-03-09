@@ -44,14 +44,42 @@
       };
     },
     methods: {
-      toggleMenu() {
+    toggleMenu() {
       this.isMenuOpen = !this.isMenuOpen
       document.body.style.overflow = this.isMenuOpen ? 'hidden' : ''
     },
-    handleModalSubmit() {
-      this.showContactModal = false
-      this.showToast('Thanks! We\'ll contact you shortly.', 'success')
-      this.modalEmail = ''
+    
+    handleScroll() {
+      this.isScrolled = window.scrollY > 50
+      
+      // Close mobile menu on scroll
+      if (this.isMenuOpen && window.scrollY > 100) {
+        this.isMenuOpen = false
+        document.body.style.overflow = ''
+      }
+    },
+    
+    handleResize() {
+      if (window.innerWidth > 768 && this.isMenuOpen) {
+        this.isMenuOpen = false
+        document.body.style.overflow = ''
+      }
+    },
+    
+    scrollToSection(href) {
+      const element = document.querySelector(href)
+      if (element) {
+        const offset = 80
+        const elementPosition = element.getBoundingClientRect().top
+        const offsetPosition = elementPosition + window.pageYOffset - offset
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        })
+      }
+      this.isMenuOpen = false
+      document.body.style.overflow = ''
     },
     },
   };
